@@ -10,4 +10,4 @@
 
 ---
 ### A static, locally hostable, decentralized music playing & storing web application in the style of Spotify.
-**No live servers/databses required. Build solely through caching and localStorage in JavaScript with the purpose of being able to be hsoted by anyone that has atleast a little web literacy. Just fork and create a Github Page!**
+**No live servers/databses required. Built solely through caching and localStorage in JavaScript with the purpose of being able to be hsoted by anyone that has atleast a little web literacy. Just fork and create a Github Page!**
