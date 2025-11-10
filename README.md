@@ -18,6 +18,7 @@ The HTML skeleton’s up and walking, the CSS is doing its best runway impressio
 
 So yeah, it’s more of a vibe than an app right now.
 
+> ## THIS REPOSITORY IS NOT CORRELATED TO THE SPOOFIFY COIN IN ANY WAY NOR DO WE HAVE ANY PLANS ON DOING ANYTHING WITH CRYPTO
 
 ## The Web App
 ### TODO (aka The “Things That Will Someday Work” list)
