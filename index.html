@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    <!-- Sidebar -->
     <div class="sidebar">
       <div class="logo">
         <a href="#"><img src="assets/images/Spoofify.png" alt="Logo" /></a>
@@ -38,11 +39,11 @@
           <li><a href="#">Cookies</a></li>
           <li><a href="https://github.com/x64bitMango/spoofify">View on GitHub</a></li>
           <li><a href="https://raw.githubusercontent.com/x64bitMango/spoofify/refs/heads/main/LICENSE">Licensed under MPL 2.0</a></li>
-          
         </ul>
       </div>
     </div>
 
+    <!-- Main Container -->
     <div class="main-container">
       <div class="topbar">
         <div class="prev-next-buttons">
@@ -62,40 +63,32 @@
         </div>
       </div>
 
-      <div class="spotify-playlists">
-        <h2>Uploaded Tracks</h2>
-        <div class="list">
-          <div class="item">
-            <img src="assets/images/musicPlaceholder.webp" />
-            <div class="play"><span class="fa fa-play"></span></div>
-            <h4>Upload music</h4>
-            <p>Upload a .mp3, .ogg, or .wav file</p>
-          </div>
-          <div class="item">
-            <img src="assets/images/musicPlaceholder.webp" />
-            <div class="play"><span class="fa fa-play"></span></div>
-            <h4>Upload music</h4>
-            <p>Upload a .mp3, .ogg, or .wav file</p>
-          </div>
-          <div class="item">
-            <img src="assets/images/musicPlaceholder.webp" />
-            <div class="play"><span class="fa fa-play"></span></div>
-            <h4>Upload music</h4>
-            <p>Upload a .mp3, .ogg, or .wav file</p>
-          </div>
-          <div class="item">
-            <img src="assets/images/musicPlaceholder.webp" />
-            <div class="play"><span class="fa fa-play"></span></div>
-            <h4>Upload music</h4>
-            <p>Upload a .mp3, .ogg, or .wav file</p>
-          </div>
+      <!-- Spoofify App Functional Section -->
+      <div id="app" class="spotify-player">
+        <div id="dropzone" class="drop">
+          Drag & drop MP3s here or 
+          <input id="fileinput" type="file" multiple accept="audio/*">
         </div>
+
+        <div class="now-playing">
+          <div id="now-title">No track playing</div>
+          <div id="controls">
+            <button id="prev" class="control-btn"><span class="fa fa-backward"></span></button>
+            <button id="play" class="control-btn"><span class="fa fa-play"></span></button>
+            <button id="next" class="control-btn"><span class="fa fa-forward"></span></button>
+            <button id="loop" class="control-btn"><span class="fa fa-repeat"></span></button>
+            <button id="shuffle" class="control-btn"><span class="fa fa-random"></span></button>
+          </div>
+          <div id="progress" class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <div id="timer">0:00 / 0:00</div>
+        </div>
+
+        <ul id="library" class="library-list"></ul>
       </div>
     </div>
 
-    <script
-      src="https://kit.fontawesome.com/23cecef777.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
   </body>
 </html>
