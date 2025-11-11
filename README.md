@@ -2,7 +2,6 @@
 
 ![static badge](https://img.shields.io/badge/stability-terribly_failing-red?logo=github&logoColor=white)
 ![static badge](https://img.shields.io/badge/issues-∞-black?logo=github&logoColor=white)
-![Last commit](https://img.shields.io/github/last-commit/x64bitMango/spoofify/main)
 ![GitHub repo size](https://img.shields.io/github/repo-size/x64bitMango/spoofify)
 ![Website](https://img.shields.io/badge/Pages-Not_Even_Started-darkred?logo=cloudflare-pages&logoColor=white)
 ![HTML](https://img.shields.io/badge/-HTML5-orange?logo=HTML5&logoColor=white)
@@ -11,14 +10,12 @@
 
 ---
 ### A static, locally hostable, decentralized music playing & storing web application in the style of Spotify.
-**No live servers/databases required. Built solely through caching and localStorage in JavaScript with the purpose of being hostable by anyone with at least a smidge of web literacy. Just fork and spin up a GitHub Page. No backend, no nonsense.**
+**No live servers/databases required. Being built solely through caching and localStorage in JavaScript with the purpose of being hostable by anyone with at least a smidge of web literacy. Just fork and spin up a GitHub Page (when it's up and going). No backend, no nonsense.**
 
-Right now, Spoofify’s in what I’ll generously call super-beta-alpha-pre-release-mode™.
-The HTML skeleton’s up and walking, the CSS is doing its best runway impression, but the JS brain hasn’t been installed yet, meaning no actual playback or logic is wired up. The main page layout is there, all the song tiles are struttin’ around looking pretty, but the buttons are purely decorative for now.
-
-So yeah, it’s more of a vibe than an app right now.
-
-> ## THIS REPOSITORY IS NOT CORRELATED TO THE SPOOFIFY COIN IN ANY WAY NOR DO WE HAVE ANY PLANS ON DOING ANYTHING WITH CRYPTO
+> [!TIP]
+> Currently, this repository only hosts the HTML skeleton and CSS for spoofify, with no Javascript attached yet. This will be worked on and slowly improved given time, but I'm starting with an initial upload of what I have so far, with the buttons being purely decorative for now.
+> 
+> This repository is not backed/endorsed by Spotify or any other organization in any way. And neither is this repository related to the SPOOF (Spoofify) crypto currency nor do I have any plans on correlating with crypto in any way.
 
 ## The Web App
 ### TODO (aka The “Things That Will Someday Work” list)
