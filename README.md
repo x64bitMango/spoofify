@@ -3,7 +3,7 @@
 ![static badge](https://img.shields.io/badge/stability-terribly_failing-red?logo=github&logoColor=white)
 ![static badge](https://img.shields.io/badge/issues-∞-black?logo=github&logoColor=white)
 ![Last commit](https://img.shields.io/github/last-commit/x64bitMango/spoofify/main)
-[![contributors (incl. anon)](https://img.shields.io/github/contributors/x64bitMango/spoofify)](https://github.com/x64bitMango/spoofify/graphs/contributors)
+![GitHub repo size](https://img.shields.io/github/repo-size/x64bitMango/spoofify)
 ![Website](https://img.shields.io/badge/Pages-Not_Even_Started-darkred?logo=cloudflare-pages&logoColor=white)
 ![HTML](https://img.shields.io/badge/-HTML5-orange?logo=HTML5&logoColor=white)
 ![CSS](https://img.shields.io/badge/-CSS-blue?logo=CSS&logoColor=white)
