@@ -1,179 +1,138 @@
-// Something is better than nothing wether it works or not
+// ======= SPOTIFY CLONE APP ======= //
+// Handles UI, playback, and cookies.
 
-// Elements
-const fileInput = document.getElementById('fileinput');
-const dropzone = document.getElementById('dropzone');
-const libraryEl = document.getElementById('library');
-const nowTitle = document.getElementById('now-title');
-const playBtn = document.getElementById('play');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-const loopBtn = document.getElementById('loop');
-const shuffleBtn = document.getElementById('shuffle');
-const progress = document.getElementById('progress');
-const progressFill = document.getElementById('progress-fill');
-const timer = document.getElementById('timer');
+// ======= GLOBAL STATE ======= //
+let currentTrack = null;
+let isPlaying = false;
+let volume = 0.8;
 
-let tracks = [];               // Array of File objects
-let audio = new Audio();
-let currentIndex = 0;
-let isLoop = false;
-let isShuffle = false;
+// ======= DOM ELEMENTS ======= //
+const playBtn = document.getElementById("play-btn");
+const nextBtn = document.getElementById("next-btn");
+const prevBtn = document.getElementById("prev-btn");
+const progressBar = document.getElementById("progress");
+const volumeSlider = document.getElementById("volume");
+const trackTitle = document.getElementById("track-title");
+const trackArtist = document.getElementById("track-artist");
+const sidebarItems = document.querySelectorAll(".sidebar-item");
+const themeToggle = document.getElementById("theme-toggle");
 
-// ======= Load from localStorage =======
-const storedTracks = localStorage.getItem('spoofify-tracks');
-if (storedTracks) {
-  tracks = JSON.parse(storedTracks);
-  renderLibrary();
-}
-const storedIndex = localStorage.getItem('spoofify-currentIndex');
-if (storedIndex) currentIndex = parseInt(storedIndex);
-
-// ======= Handle file input =======
-fileInput.addEventListener('change', e => {
-  addTracks(Array.from(e.target.files));
-});
-
-dropzone.addEventListener('dragover', e => {
-  e.preventDefault();
-  dropzone.classList.add('hover');
-});
-
-dropzone.addEventListener('dragleave', e => {
-  dropzone.classList.remove('hover');
-});
-
-dropzone.addEventListener('drop', e => {
-  e.preventDefault();
-  dropzone.classList.remove('hover');
-  addTracks(Array.from(e.dataTransfer.files));
-});
-
-// ======= Add tracks and render library =======
-function addTracks(newFiles) {
-  newFiles.forEach(file => {
-    if (!file.type.startsWith('audio/')) return;
-    // store as object with name and URL
-    const trackObj = {
-      name: file.name,
-      url: URL.createObjectURL(file)
-    };
-    tracks.push(trackObj);
-  });
-  localStorage.setItem('spoofify-tracks', JSON.stringify(tracks));
-  renderLibrary();
+// ======= COOKIE HELPERS ======= //
+function setCookie(name, value, days = 365) {
+  const date = new Date();
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+  document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
 }
 
-// ======= Render library =======
-function renderLibrary() {
-  libraryEl.innerHTML = '';
-  tracks.forEach((track, i) => {
-    const li = document.createElement('li');
-    li.textContent = track.name;
-    li.classList.toggle('current', i === currentIndex);
-    li.addEventListener('click', () => playTrack(i));
-    libraryEl.appendChild(li);
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+  return null;
+}
+
+// ======= UI INIT ======= //
+document.addEventListener("DOMContentLoaded", () => {
+  loadCookies();
+  setupEventListeners();
+  renderSidebarState();
+});
+
+// ======= EVENT LISTENERS ======= //
+function setupEventListeners() {
+  playBtn.addEventListener("click", togglePlay);
+  nextBtn.addEventListener("click", nextTrack);
+  prevBtn.addEventListener("click", prevTrack);
+  volumeSlider.addEventListener("input", changeVolume);
+  themeToggle?.addEventListener("click", toggleTheme);
+
+  sidebarItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      sidebarItems.forEach((el) => el.classList.remove("active"));
+      item.classList.add("active");
+      setCookie("lastTab", item.id);
+    });
   });
 }
 
-// ======= Play a specific track =======
-function playTrack(index) {
-  if (!tracks[index]) return;
-  currentIndex = index;
-  audio.src = tracks[index].url;
-  audio.play();
-  nowTitle.textContent = tracks[index].name;
-  playBtn.textContent = 'Pause';
-  updateLocalStorage();
-  renderLibrary();
+// ======= THEME SYSTEM ======= //
+function toggleTheme() {
+  const body = document.body;
+  body.classList.toggle("dark-theme");
+  const isDark = body.classList.contains("dark-theme");
+  setCookie("theme", isDark ? "dark" : "light");
 }
 
-// ======= Play/Pause =======
-playBtn.addEventListener('click', () => {
-  if (!audio.src && tracks.length > 0) {
-    playTrack(currentIndex);
-    return;
+function loadCookies() {
+  const savedTheme = getCookie("theme");
+  if (savedTheme === "dark") document.body.classList.add("dark-theme");
+
+  const savedTab = getCookie("lastTab");
+  if (savedTab) {
+    document.getElementById(savedTab)?.classList.add("active");
   }
-  if (audio.paused) {
-    audio.play();
-    playBtn.textContent = 'Pause';
+
+  const savedVolume = getCookie("volume");
+  if (savedVolume) {
+    volume = parseFloat(savedVolume);
+    volumeSlider.value = volume;
+  }
+}
+
+// ======= PLAYBACK SYSTEM ======= //
+function togglePlay() {
+  if (!currentTrack) return;
+
+  isPlaying = !isPlaying;
+  playBtn.innerHTML = isPlaying ? "⏸️" : "▶️";
+  if (isPlaying) {
+    // play audio
+    currentTrack.play();
   } else {
-    audio.pause();
-    playBtn.textContent = 'Play';
+    currentTrack.pause();
   }
-});
-
-// ======= Prev / Next =======
-prevBtn.addEventListener('click', () => {
-  if (isShuffle) {
-    playTrack(randomIndex());
-  } else {
-    currentIndex = (currentIndex - 1 + tracks.length) % tracks.length;
-    playTrack(currentIndex);
-  }
-});
-
-nextBtn.addEventListener('click', () => {
-  if (isShuffle) {
-    playTrack(randomIndex());
-  } else {
-    currentIndex = (currentIndex + 1) % tracks.length;
-    playTrack(currentIndex);
-  }
-});
-
-// ======= Loop =======
-loopBtn.addEventListener('click', () => {
-  isLoop = !isLoop;
-  audio.loop = isLoop;
-  loopBtn.style.backgroundColor = isLoop ? '#1db954' : '';
-});
-
-// ======= Shuffle =======
-shuffleBtn.addEventListener('click', () => {
-  isShuffle = !isShuffle;
-  shuffleBtn.style.backgroundColor = isShuffle ? '#1db954' : '';
-});
-
-function randomIndex() {
-  return Math.floor(Math.random() * tracks.length);
 }
 
-// ======= Progress bar & timer =======
-audio.addEventListener('timeupdate', () => {
-  const pct = (audio.currentTime / audio.duration) * 100 || 0;
-  progressFill.style.width = pct + '%';
-  timer.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
-});
-
-// Click progress bar to seek
-progress.addEventListener('click', e => {
-  const rect = progress.getBoundingClientRect();
-  const pct = (e.clientX - rect.left) / rect.width;
-  audio.currentTime = pct * audio.duration;
-});
-
-function formatTime(seconds) {
-  if (isNaN(seconds)) return '0:00';
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60).toString().padStart(2, '0');
-  return `${m}:${s}`;
+function nextTrack() {
+  console.log("Next track clicked");
+  // You can implement playlist skipping here later
 }
 
-// ======= Update localStorage =======
-function updateLocalStorage() {
-  localStorage.setItem('spoofify-currentIndex', currentIndex);
+function prevTrack() {
+  console.log("Previous track clicked");
 }
 
-// ======= Auto-play next track =======
-audio.addEventListener('ended', () => {
-  if (!isLoop) {
-    if (isShuffle) playTrack(randomIndex());
-    else nextBtn.click();
-  }
+function changeVolume() {
+  volume = volumeSlider.value;
+  setCookie("volume", volume);
+  if (currentTrack) currentTrack.volume = volume;
+}
+
+// ======= TRACK MANAGEMENT ======= //
+function loadTrack(trackData) {
+  if (currentTrack) currentTrack.pause();
+
+  currentTrack = new Audio(trackData.src);
+  trackTitle.textContent = trackData.title;
+  trackArtist.textContent = trackData.artist;
+  currentTrack.volume = volume;
+  currentTrack.play();
+  isPlaying = true;
+  playBtn.innerHTML = "⏸️";
+}
+
+// ======= RENDER SIDEBAR ======= //
+function renderSidebarState() {
+  const activeTab = getCookie("lastTab");
+  sidebarItems.forEach((item) => {
+    item.classList.toggle("active", item.id === activeTab);
+  });
+}
+
+// ======= DEMO TRACK ======= //
+// Example usage:
+loadTrack({
+  src: "music/demo.mp3", // Replace with real track path
+  title: "Demo Track",
+  artist: "Your Artist Name",
 });
-
-// ======= Initialize =======
-if (tracks.length > 0) {
-  playTrack(currentIndex);
-}
