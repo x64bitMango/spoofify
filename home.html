@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spoofify - Home</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts/app.js"></script>
+  <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="assets/images/Spoofify.png" alt="Spoofify Logo" />
+    </div>
+
+    <div class="nav-section">
+      <a href="home.html" class="active"><i class="fa fa-home"></i> Home</a>
+      <a href="search.html"><i class="fa fa-search"></i> Search</a>
+      <a href="upload.html"><i class="fa fa-upload"></i> Upload Music</a>
+      <a href="uploads.html"><i class="fa fa-music"></i> Your Uploads</a>
+      <a href="library.html"><i class="fa fa-book"></i> Your Library</a>
+    </div>
+
+    <div class="nav-section">
+      <a href="create-playlist.html"><i class="fa fa-plus-square"></i> Create Playlist</a>
+      <a href="liked.html"><i class="fa fa-heart"></i> Liked Songs</a>
+    </div>
+
+    <div class="policies">
+      <a href="#">Cookies</a>
+      <a href="https://github.com/x64bitMango/spoofify" target="_blank">View on GitHub</a>
+      <a href="https://raw.githubusercontent.com/x64bitMango/spoofify/refs/heads/main/LICENSE" target="_blank">License</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Topbar -->
+    <div class="topbar">
+      <button><i class="fa fa-chevron-left"></i></button>
+      <button><i class="fa fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Home Page Content -->
+    <div id="home-page" class="page active">
+      <!-- Hero / Featured Section -->
+      <div class="hero-section">
+        <h1>Good Evening</h1>
+        <div class="featured-playlists">
+          <div class="playlist-card">
+            <img src="assets/images/album1.jpg" alt="Playlist 1" />
+            <div class="playlist-title">Top Red Hits</div>
+          </div>
+          <div class="playlist-card">
+            <img src="assets/images/album2.jpg" alt="Playlist 2" />
+            <div class="playlist-title">Red Vibes</div>
+          </div>
+          <div class="playlist-card">
+            <img src="assets/images/album3.jpg" alt="Playlist 3" />
+            <div class="playlist-title">Hot Tracks</div>
+          </div>
+          <div class="playlist-card">
+            <img src="assets/images/album4.jpg" alt="Playlist 4" />
+            <div class="playlist-title">Indie Red</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recently Played Section -->
+      <div class="recently-played">
+        <h2>Recently Played</h2>
+        <div class="recent-grid">
+          <div class="recent-card">
+            <img src="assets/images/album5.jpg" alt="Recent 1" />
+            <div class="recent-title">Song 1</div>
+          </div>
+          <div class="recent-card">
+            <img src="assets/images/album6.jpg" alt="Recent 2" />
+            <div class="recent-title">Song 2</div>
+          </div>
+          <div class="recent-card">
+            <img src="assets/images/album7.jpg" alt="Recent 3" />
+            <div class="recent-title">Song 3</div>
+          </div>
+          <div class="recent-card">
+            <img src="assets/images/album8.jpg" alt="Recent 4" />
+            <div class="recent-title">Song 4</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Player -->
+  <div class="player">
+    <div class="player-left">
+      <div id="now-title">No track playing</div>
+    </div>
+
+    <div class="player-center">
+      <div class="player-controls">
+        <button id="prev"><i class="fa fa-backward"></i></button>
+        <button id="play"><i class="fa fa-play"></i></button>
+        <button id="next"><i class="fa fa-forward"></i></button>
+        <button id="loop"><i class="fa fa-repeat"></i></button>
+        <button id="shuffle"><i class="fa fa-random"></i></button>
+      </div>
+      <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+      </div>
+      <div id="timer">0:00 / 0:00</div>
+    </div>
+  </div>
+</body>
+</html>
 
