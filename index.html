@@ -3,92 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spoofify</title>
     <link rel="stylesheet" href="styles.css" />
     <script defer src="scripts/app.js"></script>
-    <title>Spoofify</title>    
+    <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
     <!-- Sidebar -->
-    <div class="sidebar">
+    <nav class="sidebar">
       <div class="logo">
-        <a href="#"><img src="assets/images/Spoofify.png" alt="Logo" /></a>
+        <a href="#"><img src="assets/images/Spoofify.png" alt="Spoofify Logo" /></a>
       </div>
 
-      <div class="navigation">
-        <ul>
-          <li><a href="#"><span class="fa fa-home"></span><span>Home</span></a></li>
-          <li><a href="#"><span class="fa fa-search"></span><span>Search</span></a></li>
-          <li class="upload-item">
-            <a href="#" class="upload-label"><span class="fa fas fa-plus-square"></span><span>Upload Music</span></a>
-          </li>
-          <li><a href="#"><span class="fa fas fa-music"></span><span>Your Uploads</span></a></li>
-          <li><a href="#"><span class="fa fas fa-book"></span><span>Your Library</span></a></li>
-        </ul>
-      </div>
+      <ul class="menu">
+        <li><a href="#"><i class="fa fa-home"></i><span>Home</span></a></li>
+        <li><a href="#"><i class="fa fa-search"></i><span>Search</span></a></li>
+        <li><a href="#" class="upload-label"><i class="fa fa-plus-square"></i><span>Upload Music</span></a></li>
+        <li><a href="#"><i class="fa fa-music"></i><span>Your Uploads</span></a></li>
+        <li><a href="#"><i class="fa fa-book"></i><span>Your Library</span></a></li>
+      </ul>
 
-      <div class="navigation">
-        <ul>
-          <li><a href="#"><span class="fa fas fa-plus-square"></span><span>Create Playlist</span></a></li>
-          <li><a href="#"><span class="fa fas fa-heart"></span><span>Liked Songs</span></a></li>
-        </ul>
-      </div>
+      <ul class="menu secondary">
+        <li><a href="#"><i class="fa fa-plus-square"></i><span>Create Playlist</span></a></li>
+        <li><a href="#"><i class="fa fa-heart"></i><span>Liked Songs</span></a></li>
+      </ul>
 
-      <div class="policies">
-        <ul>
-          <li><a href="#">Cookies</a></li>
-          <li><a href="https://github.com/x64bitMango/spoofify">View on GitHub</a></li>
-          <li><a href="https://raw.githubusercontent.com/x64bitMango/spoofify/refs/heads/main/LICENSE">Licensed under MPL 2.0</a></li>
-        </ul>
-      </div>
-    </div>
+      <footer class="sidebar-footer">
+        <a href="#">Cookies</a>
+        <a href="https://github.com/x64bitMango/spoofify">GitHub</a>
+        <a href="https://raw.githubusercontent.com/x64bitMango/spoofify/refs/heads/main/LICENSE">MPL 2.0</a>
+      </footer>
+    </nav>
 
-    <!-- Main Container -->
-    <div class="main-container">
-      <div class="topbar">
-        <div class="prev-next-buttons">
-          <button type="button" class="fa fas fa-chevron-left"></button>
-          <button type="button" class="fa fas fa-chevron-right"></button>
+    <!-- Main -->
+    <main class="main-container">
+      <header class="topbar">
+        <div class="nav-buttons">
+          <button class="fa fa-chevron-left"></button>
+          <button class="fa fa-chevron-right"></button>
         </div>
 
-        <div class="navbar">
-          <ul>
-            <li></li>
-            <li><a href="#">Empty</a></li>
-            <li><a href="#">Empty</a></li>
-            <li class="divider">|</li>
-            <li><a href="#">Empty</a></li>
-          </ul>
-          <button type="button">Empty</button>
+        <div class="user-navbar">
+          <input type="text" placeholder="Search music..." class="search-input" />
+          <button class="btn">Profile</button>
         </div>
-      </div>
+      </header>
 
-      <!-- Spoofify App Functional Section -->
-      <div id="app" class="spotify-player">
+      <!-- Player + Library -->
+      <section id="app" class="spotify-player">
         <div id="dropzone" class="drop">
-          Drag & drop MP3s here or 
-          <input id="fileinput" type="file" multiple accept="audio/*">
+          <label for="fileinput">🎵 Drag & drop MP3s here or click to upload</label>
+          <input id="fileinput" type="file" multiple accept="audio/*" hidden>
         </div>
 
         <div class="now-playing">
           <div id="now-title">No track playing</div>
           <div id="controls">
-            <button id="prev" class="control-btn"><span class="fa fa-backward"></span></button>
-            <button id="play" class="control-btn"><span class="fa fa-play"></span></button>
-            <button id="next" class="control-btn"><span class="fa fa-forward"></span></button>
-            <button id="loop" class="control-btn"><span class="fa fa-repeat"></span></button>
-            <button id="shuffle" class="control-btn"><span class="fa fa-random"></span></button>
+            <button id="prev" class="control-btn"><i class="fa fa-backward"></i></button>
+            <button id="play" class="control-btn"><i class="fa fa-play"></i></button>
+            <button id="next" class="control-btn"><i class="fa fa-forward"></i></button>
+            <button id="loop" class="control-btn"><i class="fa fa-repeat"></i></button>
+            <button id="shuffle" class="control-btn"><i class="fa fa-random"></i></button>
           </div>
-          <div id="progress" class="progress-bar">
-            <div id="progress-fill" class="progress-fill"></div>
-          </div>
+          <div id="progress" class="progress-bar"><div id="progress-fill"></div></div>
           <div id="timer">0:00 / 0:00</div>
         </div>
 
         <ul id="library" class="library-list"></ul>
-      </div>
-    </div>
-
-    <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
+      </section>
+    </main>
   </body>
 </html>
