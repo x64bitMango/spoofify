@@ -1,7 +1,7 @@
 # ⚖️ Security Policy
 
 > [!NOTE]
-> There are no active stable versions of the `main` branch currently.
+> There are no active stable versions/releases of the `main` branch currently.
 
 | Version | Supported          |
 | ------- | ------------------ |
