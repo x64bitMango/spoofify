@@ -1,6 +1,6 @@
 <img width="300" height="200" alt="Spoofify" src="https://github.com/user-attachments/assets/cb604af3-df19-474d-8aee-3fcac8ad33cf" /> 
 
-![static badge](https://img.shields.io/badge/stability-failing-less-red?logo=github&logoColor=white)
+![static badge](https://img.shields.io/badge/stability-terribly_failing-red?logo=github&logoColor=white)
 ![static badge](https://img.shields.io/badge/issues-∞-black?logo=github&logoColor=white)
 ![GitHub repo size](https://img.shields.io/github/repo-size/x64bitMango/spoofify)
 ![Website](https://img.shields.io/badge/Pages-Not_Even_Started-darkred?logo=cloudflare-pages&logoColor=white)
