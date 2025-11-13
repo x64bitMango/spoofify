@@ -12,7 +12,7 @@
 ### A static, locally hostable, decentralized music playing & storing web application in the style of Spotify.
 **No live servers/databases required. Being built solely through caching and localStorage in JavaScript with the purpose of being hostable by anyone with at least a smidge of web literacy. Just fork and spin up a GitHub Page (when it's up and going). No backend, no nonsense.**
 
-> [!IMPORTANT]
+> [!NOTE]
 > Currently, this repository only hosts the HTML skeleton and CSS for spoofify, with no Javascript attached yet. This will be worked on and slowly improved given time, but I'm starting with an initial upload of what I have so far, with the buttons being purely decorative for now.
 
 > [!WARNING]
