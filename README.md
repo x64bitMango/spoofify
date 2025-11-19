@@ -3,7 +3,7 @@
 ![static badge](https://img.shields.io/badge/stability-terribly_failing-red?logo=github&logoColor=white)
 ![static badge](https://img.shields.io/badge/issues-∞-black?logo=github&logoColor=white)
 ![GitHub repo size](https://img.shields.io/github/repo-size/x64bitMango/spoofify)
-![Website](https://img.shields.io/badge/Pages-Not_Even_Started-darkred?logo=cloudflare-pages&logoColor=white)
+![Website](https://img.shields.io/badge/Pages-Github_Pages-grey?logo=cloudflare-pages&logoColor=white)
 ![HTML](https://img.shields.io/badge/-HTML5-orange?logo=HTML5&logoColor=white)
 ![CSS](https://img.shields.io/badge/-CSS-blue?logo=CSS&logoColor=white)
 ![JS](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript&logoColor=white)
