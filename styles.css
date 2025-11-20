@@ -74,7 +74,7 @@ body {
 }
 
 .main-container {
-  margin-left: 245px;
+  margin-left: 196px;
   margin-bottom: 100px;
 }
 
@@ -491,3 +491,4 @@ body {
 .spotify-playlists .list .item:hover .play .fa {
   transform: translateY(-10px) scale(1.1);
 }
+
